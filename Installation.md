@@ -1,8 +1,6 @@
 ### Install Infrastructure
 
 > https://nodejs.org/dist/v24.15.0/node-v24.15.0-x64.msi
->
-> ✅ Automatically install the necessary tools.
 
 ```powershell
 mkdir C:\VAVR-Robot-SE
