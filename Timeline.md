@@ -2379,3 +2379,47 @@ Here is what this update brings:
 ```
 
 > VAVR-Robot-SE-STABLE-v0.7.5.tar
+
+```powershell
+VAVR-Robot-SE-FAILED-v0.6.5_I2C-Display.tar
+VAVR-Robot-SE-STABLE-v0.1.0.tar
+VAVR-Robot-SE-STABLE-v0.2.0.tar
+VAVR-Robot-SE-STABLE-v0.3.0.tar
+VAVR-Robot-SE-STABLE-v0.3.5.tar
+VAVR-Robot-SE-STABLE-v0.4.0.tar
+VAVR-Robot-SE-STABLE-v0.4.5.tar
+VAVR-Robot-SE-STABLE-v0.4.7.tar
+VAVR-Robot-SE-STABLE-v0.5.0.tar
+VAVR-Robot-SE-STABLE-v0.5.2.tar
+VAVR-Robot-SE-STABLE-v0.5.5.tar
+VAVR-Robot-SE-STABLE-v0.5.7.tar
+VAVR-Robot-SE-STABLE-v0.6.0.tar
+VAVR-Robot-SE-STABLE-v0.6.2_Display-UI.tar
+VAVR-Robot-SE-STABLE-v0.6.5.tar
+VAVR-Robot-SE-STABLE-v0.6.7.tar
+VAVR-Robot-SE-STABLE-v0.7.0.tar
+VAVR-Robot-SE-STABLE-v0.7.2.tar
+VAVR-Robot-SE-STABLE-v0.7.5.tar
+
+Change to
+
+VAVR-Robot-SE-FAILED-v0.6.5_I2C-Display.jsx
+VAVR-Robot-SE-STABLE-v0.1.0.jsx
+VAVR-Robot-SE-STABLE-v0.2.0.jsx
+VAVR-Robot-SE-STABLE-v0.3.0.jsx
+VAVR-Robot-SE-STABLE-v0.3.5.jsx
+VAVR-Robot-SE-STABLE-v0.4.0.jsx
+VAVR-Robot-SE-STABLE-v0.4.5.jsx
+VAVR-Robot-SE-STABLE-v0.4.7.jsx
+VAVR-Robot-SE-STABLE-v0.5.0.jsx
+VAVR-Robot-SE-STABLE-v0.5.2.jsx
+VAVR-Robot-SE-STABLE-v0.5.5.jsx
+VAVR-Robot-SE-STABLE-v0.5.7.jsx
+VAVR-Robot-SE-STABLE-v0.6.0.jsx
+VAVR-Robot-SE-STABLE-v0.6.2_Display-UI.jsx
+VAVR-Robot-SE-STABLE-v0.6.5.jsx
+VAVR-Robot-SE-STABLE-v0.6.7.jsx
+VAVR-Robot-SE-STABLE-v0.7.0.jsx
+VAVR-Robot-SE-STABLE-v0.7.2.jsx
+VAVR-Robot-SE-STABLE-v0.7.5.jsx
+```
