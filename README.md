@@ -2,6 +2,8 @@
 
 **VAVR-Robot-SE** is a browser-based, deterministic robotics simulation environment that allows users to write and execute Arduino (C/C++) code on a virtual ATmega328P microcontroller connected to a 2D physics engine.
 
+![Software-Preview.png](https://github.com/user-attachments/assets/75af7a14-25db-4251-98c1-a931aff44a52)
+
 ## 📖 Background
 This project was built to replace the aging [C/C++ Robot Simulator v.130715](https://krumonrobot.blogspot.com/). 
 
