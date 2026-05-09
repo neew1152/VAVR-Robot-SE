@@ -16,14 +16,14 @@ The simulator acts as a bridge between a cycle-accurate CPU emulator and a rigid
 
 * **The Brain (`avr8js`)**: Emulates the ATmega328P CPU. It executes compiled `.hex` machine code with cycle-accurate precision, managing Timers, PWM (via OCR registers), ADC channels, and Digital I/O.
 * **The World (`matter-js`)**: Manages the 2D physics, collisions, and raycasting.
-* **The Bridge**: The React application intercepts CPU memory addresses. For example, it translates motor PWM signals into physical velocity forces in `matter-js`, and translates physical raycasts (Sonar/IR) or map pixel-color readings back into virtual voltages for the ADC.
+* **The Bridge**: The React application intercepts CPU memory addresses. For example, it translates motor PWM signals into physical velocity forces in `matter-js`, and translates physical raycasts or map pixel-color readings back into virtual voltages for the ADC.
 * **The Compiler**: Uses the Wokwi Cloud Compiler API to translate user-written Arduino C/C++ code into `.hex` binaries on the fly.
 
 ## ✨ Key Features
-* 🏗️ **Customizable Robot Build:** Equip a custom chassis with DC Motors, Sonar, IR Sensors, Analog IMU (Compass), Active Buzzers, Grabbers, and 16x2 LCDs.
-* 📦 **Dynamic Arena Lab:** Place static walls, pickable props, and import custom floor maps (for IR line-tracking).
+* 🏗️ **Customizable Robot Build:** Equip a custom chassis with DC Motors, Sonar, IR Sensors, Analog IMU, Active Buzzers, Grabbers, and 16x2 LCDs.
+* 📦 **Dynamic Arena Lab:** Place static walls, pickable props, and import custom floor maps.
 * 🕰️ **Legacy "Krumon v.130715" Mode:** A native compatibility layer that invisibly injects a C-library into the compiler, allowing legacy curriculum code to run flawlessly in the modern environment.
-* 📊 **Live Telemetry & Serial Monitor:** Real-time feedback of virtual CPU pins (PORTB), spatial coordinates, and standard Serial output.
+* 📊 **Live Telemetry & Serial Monitor:** Real-time feedback of virtual CPU pins, spatial coordinates, and standard Serial output.
 * 💾 **Offline Execution:** Flash pre-compiled `.hex` files directly into the virtual CPU without needing an internet connection.
 
 ---
