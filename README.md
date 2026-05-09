@@ -26,8 +26,6 @@ The simulator acts as a bridge between a cycle-accurate CPU emulator and a rigid
 * 📊 **Live Telemetry & Serial Monitor:** Real-time feedback of virtual CPU pins, spatial coordinates, and standard Serial output.
 * 💾 **Offline Execution:** Flash pre-compiled `.hex` files directly into the virtual CPU without needing an internet connection.
 
----
-
 ## ⚠️ Known Issues & Unsolved Limitations
 
 As an evolving emulation environment, there are a few acknowledged bugs and intentional architectural limitations:
