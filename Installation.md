@@ -1,7 +1,7 @@
 ### Infrastructure
 
-> https://nodejs.org/dist/v24.15.0/node-v24.15.0-x64.msi
-
+> https://nodejs.org/en/download/current
+> 
 ```powershell
 mkdir C:\VAVR-Robot-SE
 cd C:\VAVR-Robot-SE
