@@ -1,6 +1,6 @@
 ### Infrastructure
 
-> https://nodejs.org/en/download/current
+> https://nodejs.org/en/download
 > 
 ```powershell
 mkdir C:\VAVR-Robot-SE
