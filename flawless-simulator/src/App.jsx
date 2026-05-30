@@ -84,7 +84,7 @@ const TYPE_TAGS = {
   dc_motor: 'DC MOTOR',
   imu: 'IMU',
   ir_sensor: 'IR SENSOR',
-  sonar: 'SONAR',
+  ultrasonic: 'ULTRASONIC',
   grabber: 'GRABBER',
   buzzer: 'BUZZER',
   oled128x64: '128x64 OLED',
@@ -94,7 +94,7 @@ const TYPE_TAGS = {
 const DEFAULT_COLORS = {
   chassis: '#3b82f6',
   dc_motor: '#000000',
-  sonar: '#ef4444',
+  ultrasonic: '#ef4444',
   ir_sensor: '#22c55e',
   grabber: '#06b6d4',
   buzzer: '#f59e0b',
@@ -387,7 +387,7 @@ function App() {
   const arenaBodiesRef = useRef([]); 
   const mouseConstraintRef = useRef(null); 
   
-  const sonarStatesRef = useRef({}); 
+  const ultrasonicStatesRef = useRef({}); 
   const grabberStatesRef = useRef({}); 
 
   // Audio Infrastructure
@@ -469,16 +469,16 @@ function App() {
        setNewPartType('ir_sensor'); 
        setRobotBuild(prev => {
           const nextParts =[];
-          let counts = { ir_sensor: 0, sonar: 0 };
+          let counts = { ir_sensor: 0, ultrasonic: 0 };
           
           prev.parts.forEach(p => {
              if (p.type === 'ir_sensor' && counts.ir_sensor < 7) {
                 nextParts.push(p);
                 counts.ir_sensor++;
              }
-             if (p.type === 'sonar' && counts.sonar < 1) {
+             if (p.type === 'ultrasonic' && counts.ultrasonic < 1) {
                 nextParts.push(p);
-                counts.sonar++;
+                counts.ultrasonic++;
              }
           });
 
@@ -591,7 +591,7 @@ function App() {
            if (importedKrumonMode) {
                // Enforce Krumon limits on imported builds
                const nextParts =[];
-               const counts = { dc_motor: 0, buzzer: 0, grabber: 0, lcd16x2: 0, ir_sensor: 0, sonar: 0 };
+               const counts = { dc_motor: 0, buzzer: 0, grabber: 0, lcd16x2: 0, ir_sensor: 0, ultrasonic: 0 };
                nextBuild.parts.forEach(p => {
                   if (['imu', 'oled128x64'].includes(p.type)) return;
                   const max = p.type === 'dc_motor' ? 4 : p.type === 'ir_sensor' ? 7 : 1;
@@ -697,7 +697,7 @@ function App() {
 
       let pW = 6, pH = 6;
       if (p.type === 'dc_motor') { pW = 14; pH = 6; }
-      else if (p.type === 'sonar') { pW = 6; pH = 12; }
+      else if (p.type === 'ultrasonic') { pW = 6; pH = 12; }
       else if (p.type === 'ir_sensor') { pW = 4; pH = 4; }
       else if (p.type === 'grabber') { pW = 10; pH = 8; }
       else if (p.type === 'buzzer' || p.type === 'imu' || p.type === 'lcd16x2' || p.type === 'oled128x64') { pW = 6; pH = 6; } 
@@ -987,9 +987,9 @@ function App() {
            }
         }
 
-        // --- RENDER SONAR RAYCAST LINE ---
-        if (p.type === 'sonar') {
-          const state = sonarStatesRef.current[p.id];
+        // --- RENDER ULTRASONIC RAYCAST LINE ---
+        if (p.type === 'ultrasonic') {
+          const state = ultrasonicStatesRef.current[p.id];
           const maxRange = p.range || 400;
           const hitDist = state ? state.lastDist : maxRange; 
           
@@ -1104,13 +1104,13 @@ function App() {
     if (krumonMode) {
       const count = robotBuild.parts.filter(p => p.type === type).length;
       if (type === 'ir_sensor' && count >= 7) return;
-      if (type === 'sonar' && count >= 1) return;
+      if (type === 'ultrasonic' && count >= 1) return;
     }
 
     setRobotBuild(prev => {
       let newPart = { id: generateId(), type: type, offsetX: 0, offsetY: 0, angle: 0, color: DEFAULT_COLORS[type] };
       if (type === 'dc_motor') { newPart.name = 'New Motor'; newPart.pin = 9; newPart.pinDir = 7; }
-      else if (type === 'sonar') { newPart.name = 'New Sonar'; newPart.pinTrig = 3; newPart.pinEcho = 2; newPart.offsetX = 25; newPart.range = 400; }
+      else if (type === 'ultrasonic') { newPart.name = 'New Ultrasonic'; newPart.pinTrig = 3; newPart.pinEcho = 2; newPart.offsetX = 25; newPart.range = 400; }
       else if (type === 'ir_sensor') { newPart.name = 'New IR Sensor'; newPart.pin = 14; newPart.offsetX = 25; newPart.irMode = 'map'; } 
       else if (type === 'grabber') { newPart.name = 'New Grabber'; newPart.pin = 5; newPart.offsetX = 25; } 
       else if (type === 'buzzer') { newPart.name = 'Active Buzzer'; newPart.pin = 8; newPart.offsetX = 0; } 
@@ -1178,7 +1178,7 @@ function App() {
     });
     activeOscillatorsRef.current = {};
 
-    sonarStatesRef.current = {}; 
+    ultrasonicStatesRef.current = {}; 
     if (engineRef.current) {
         Object.values(grabberStatesRef.current).forEach(state => {
             if (state.constraints) {
@@ -1318,8 +1318,8 @@ function App() {
          el.textContent = "";
       });
 
-      const sonars = buildRef.current.parts.filter(p => p.type === 'sonar');
-      const sonarDefs = sonars.map(p => {
+      const ultrasonics = buildRef.current.parts.filter(p => p.type === 'ultrasonic');
+      const ultrasonicDefs = ultrasonics.map(p => {
          let portAddr, bit;
          if (p.pinTrig >= 0 && p.pinTrig <= 7) { portAddr = 0x2B; bit = p.pinTrig; } 
          else if (p.pinTrig >= 8 && p.pinTrig <= 13) { portAddr = 0x25; bit = p.pinTrig - 8; } 
@@ -1341,10 +1341,10 @@ function App() {
 
               if (i % 64 === 0 && robotRef.current) {
                   const cycle = cpu.cycles;
-                  for (let s=0; s < sonarDefs.length; s++) {
-                      const sd = sonarDefs[s];
+                  for (let s=0; s < ultrasonicDefs.length; s++) {
+                      const sd = ultrasonicDefs[s];
                       const isTrigHigh = (cpu.data[sd.portAddr] & sd.mask) !== 0;
-                      const state = sonarStatesRef.current[sd.id] || { lastTrig: false, echoStart: 0, echoEnd: 0, lastDist: sd.maxRange };
+                      const state = ultrasonicStatesRef.current[sd.id] || { lastTrig: false, echoStart: 0, echoEnd: 0, lastDist: sd.maxRange };
 
                       if (isTrigHigh && !state.lastTrig) {
                           const robX = robotRef.current.position.x;
@@ -1373,15 +1373,15 @@ function App() {
                           state.echoEnd = state.echoStart + (hitDist * 58 * 16);
                       }
                       state.lastTrig = isTrigHigh;
-                      sonarStatesRef.current[sd.id] = state;
+                      ultrasonicStatesRef.current[sd.id] = state;
                   }
               }
 
               if (i % 16 === 0) {
                   const cycle = cpu.cycles;
-                  for (let s=0; s < sonarDefs.length; s++) {
-                      const sd = sonarDefs[s];
-                      const state = sonarStatesRef.current[sd.id];
+                  for (let s=0; s < ultrasonicDefs.length; s++) {
+                      const sd = ultrasonicDefs[s];
+                      const state = ultrasonicStatesRef.current[sd.id];
                       if (state) {
                           const isEchoing = cycle >= state.echoStart && cycle <= state.echoEnd;
                           setExternalPin(cpu, sd.echoPin, isEchoing);
@@ -1549,8 +1549,8 @@ function App() {
                         if (uiEl) uiEl.className = "transition-colors duration-75 text-purple-600 dark:text-purple-400 font-bold";
                     }
                  }
-                 else if (part.type === 'sonar') {
-                    const state = sonarStatesRef.current[part.id];
+                 else if (part.type === 'ultrasonic') {
+                    const state = ultrasonicStatesRef.current[part.id];
                     const isEchoing = state && cpu.cycles >= state.echoStart && cpu.cycles <= state.echoEnd;
                     const uiEl = document.getElementById(`pin-ui-${part.id}`);
                     if (uiEl) uiEl.className = isEchoing ? "transition-colors duration-75 text-red-600 dark:text-red-400 font-bold" : "transition-colors duration-75 text-gray-400 dark:text-gray-600";
@@ -1741,7 +1741,7 @@ function App() {
 
     if (!krumonMode) {
       opts.push({ value: 'dc_motor', label: 'DC Motor', max: Infinity });
-      opts.push({ value: 'sonar', label: 'Sonar', max: Infinity });
+      opts.push({ value: 'ultrasonic', label: 'Ultrasonic', max: Infinity });
       opts.push({ value: 'ir_sensor', label: 'IR Sensor', max: Infinity });
       opts.push({ value: 'grabber', label: 'Grabber', max: Infinity });
       opts.push({ value: 'buzzer', label: 'Buzzer', max: Infinity });
@@ -1749,7 +1749,7 @@ function App() {
       opts.push({ value: 'imu', label: 'IMU', max: Infinity });
       opts.push({ value: 'oled128x64', label: '128x64 OLED', max: Infinity });
     } else {
-      opts.push({ value: 'sonar', label: 'Sonar', max: 1 });
+      opts.push({ value: 'ultrasonic', label: 'Ultrasonic', max: 1 });
       opts.push({ value: 'ir_sensor', label: 'IR Sensor', max: 7 });
     }
 
@@ -2054,7 +2054,7 @@ function App() {
                                      <span className="text-[10px] text-gray-500">I2C (A4/A5)</span>
                                    </div>
                                 )}
-                                {part.type === 'sonar' && (
+                                {part.type === 'ultrasonic' && (
                                    <>
                                    <div className="flex items-center gap-1">
                                      <span className="text-[10px] text-gray-500">Trig:</span>
