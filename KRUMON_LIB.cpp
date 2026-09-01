@@ -1,4 +1,4 @@
-#define Binary_h  // Prevent Arduino binary macros from conflicting with user variables
+#define Binary_h  
 #include <Arduino.h>
 #include <stdarg.h>
 
