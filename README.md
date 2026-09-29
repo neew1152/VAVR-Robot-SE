@@ -28,7 +28,7 @@ The simulator acts as a bridge between a cycle-accurate CPU emulator and a rigid
 * 📊 **Live Telemetry & Serial Monitor:** Real-time feedback of virtual CPU pins, spatial coordinates, and standard Serial output.
 * 💾 **Offline Execution:** Flash pre-compiled `.hex` files directly into the virtual CPU without needing an internet connection.
 
-## ⚠️ Known Issues & Unsolved Limitations
+## ⚠️ Known Issues
 
 As an evolving emulation environment, there are a few acknowledged bugs and intentional architectural limitations:
 
@@ -41,6 +41,3 @@ Attempting to add a "Fast Forward" or "Time Travel" feature to speed up the simu
 
 ### The `executeFrame` Bug
 There is a known bug residing within the core `executeFrame` loop synchronization. It is currently acknowledged but left as-is, as resolving it requires a substantial refactor of how `requestAnimationFrame` hands off cycles to the `avr8js` CPU.
-
-### Virtual OLED Display
-The virtual `128x64 OLED` display component is currently unsupported. While the UI element exists, the I2C graphic translation from the virtual AVR to the DOM is not functioning. Stick to the `16x2 LCD` for visual string debugging.
