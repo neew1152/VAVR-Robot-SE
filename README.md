@@ -5,13 +5,13 @@
 **VAVR-Robot-SE** is a browser-based, deterministic robotics simulation environment that allows users to write and execute Arduino (C/C++) code on a virtual ATmega328P microcontroller connected to a 2D physics engine.
 
 ## 📖 Background
-This project was built to replace the aging [C/C++ Robot Simulator v.130715](https://krumonrobot.blogspot.com/). 
+This project replaces the aging [C/C++ Robot Simulator v.130715](https://krumonrobot.blogspot.com/). 
 
 The legacy software, built on .NET Framework 3.5, suffered from critical architectural flaws:
 * **Frame-Dependent Physics:** The old simulator tied physical execution to the rendering frame rate. If the computer was under heavy load or the simulator window was minimized, the simulation would yield unstable, non-deterministic results (glitches).
 * **Memory Leaks:** The legacy .NET infrastructure was prone to random memory leaks, causing complex code to silently fail or crash the software.
 
-**VAVR-Robot-SE** solves these issues by completely decoupling the hardware logic from the visual rendering. It ensures that the virtual robot will perform exactly the same way, every single time, regardless of screen refresh rates or computer CPU load.
+**VAVR-Robot-SE** solves these issues by completely decoupling the hardware logic from the visual rendering. It ensures that the virtual robot will perform the same way, every single time, regardless of screen refresh rates or computer CPU load.
 
 ## ⚙️ How It Works
 The simulator acts as a bridge between a cycle-accurate CPU emulator and a rigid-body physics engine:
@@ -22,9 +22,8 @@ The simulator acts as a bridge between a cycle-accurate CPU emulator and a rigid
 * **The Compiler**: Uses the Wokwi Cloud Compiler API to translate user-written Arduino C/C++ code into `.hex` binaries on the fly.
 
 ## ✨ Key Features
-* 🏗️ **Customizable Robot Build:** Equip a custom chassis with DC Motors, Sonar, IR Sensors, Analog IMU, Active Buzzers, Grabbers, and 16x2 LCDs.
+* 🏗️ **Customizable Robot Build:** Equip a custom chassis with DC Motors, Ultrasonics, IR LEDs, and Grabbers.
 * 📦 **Dynamic Arena Lab:** Place static walls, pickable props, and import custom floor maps.
-* 🕰️ **Legacy "Krumon v.130715" Mode:** A native compatibility layer that invisibly injects a C-library into the compiler, allowing legacy curriculum code to run flawlessly in the modern environment.
 * 📊 **Live Telemetry & Serial Monitor:** Real-time feedback of virtual CPU pins, spatial coordinates, and standard Serial output.
 * 💾 **Offline Execution:** Flash pre-compiled `.hex` files directly into the virtual CPU without needing an internet connection.
 
