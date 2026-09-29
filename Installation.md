@@ -3,10 +3,8 @@
 > https://nodejs.org/en/download
 > 
 ```powershell
-mkdir C:\VAVR-Robot-SE
-cd C:\VAVR-Robot-SE
-npm create vite@latest flawless-simulator -- --template react
-cd flawless-simulator
+npm create vite@latest VAVR-Robot-SE -- --template react
+cd VAVR-Robot-SE
 npm install
 npm install -D @tailwindcss/vite
 npm install @monaco-editor/react lucide-react
