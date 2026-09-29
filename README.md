@@ -1,6 +1,6 @@
 # 🤖 Virtual AVR Robot Simulation Environment
 
-![Software-Preview.png](https://github.com/user-attachments/assets/75af7a14-25db-4251-98c1-a931aff44a52)
+![Software-Preview.png](https://github.com/user-attachments/assets/7147ec3a-a354-45b7-9400-53aed0ffbb28)
 
 **VAVR-Robot-SE** is a browser-based, deterministic robotics simulation environment that allows users to write and execute Arduino (C/C++) code on a virtual ATmega328P microcontroller connected to a 2D physics engine.
 
