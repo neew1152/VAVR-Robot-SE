@@ -1,13 +1,21 @@
 ### Infrastructure
 
 > https://nodejs.org/en/download
-> 
+> https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Windows_64bit.msi
+
 ```powershell
 npm create vite@latest VAVR-Robot-SE -- --template react
 cd VAVR-Robot-SE
 npm install
 npm install -D @tailwindcss/vite
 npm install @monaco-editor/react lucide-react avr8js matter-js react-resizable-panels
+
+arduino-cli core update-index
+arduino-cli core install arduino:avr
+mkdir arduino-compiler-server
+cd arduino-compiler-server
+npm init -y
+npm install express cors uuid
 ```
 
 ### Configuration
@@ -37,14 +45,12 @@ html, body, #root {
 ```
 
 Replace `src/App.jsx` with my GitHub version.
+Make `arduino-compiler-server/server.js` with my GitHub version.
 
 ```powershell
+cd VAVR-Robot-SE
 npm run dev
+
+cd VAVR-Robot-SE/arduino-compiler-server
+node server.js
 ```
-
-### How offline works with the Arduino IDE:
-
-1. You write your code in the real Arduino IDE.
-2. You click **Sketch -> Export compiled Binary**.
-3. The IDE drops a `.hex` file directly into your project folder. 
-4. You import that file to our simulator.
