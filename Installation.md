@@ -46,7 +46,8 @@ html, body, #root {
 ```
 
 Replace `src/App.jsx` with my GitHub version.
-Make `arduino-compiler-server/server.js` with my GitHub version.
+
+Make `arduino-compiler-server/server.js` match my GitHub version.
 
 ```powershell
 cd VAVR-Robot-SE
