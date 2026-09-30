@@ -2,6 +2,8 @@
 
 ![Software-Preview.png](https://github.com/user-attachments/assets/9d7a9122-8d50-4cf4-b2de-8a0d54017f9a)
 
+**Note: The most stable build is v0.7.5**
+
 **VAVR-Robot-SE** is a browser-based, deterministic robotics simulation environment that allows users to write and execute Arduino (C/C++) code on a virtual ATmega328P microcontroller connected to a 2D physics engine.
 
 ## 📖 Background
