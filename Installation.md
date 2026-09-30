@@ -7,8 +7,7 @@ npm create vite@latest VAVR-Robot-SE -- --template react
 cd VAVR-Robot-SE
 npm install
 npm install -D @tailwindcss/vite
-npm install @monaco-editor/react lucide-react
-npm install avr8js matter-js react-resizable-panels
+npm install @monaco-editor/react lucide-react avr8js matter-js react-resizable-panels
 ```
 
 ### Configuration
