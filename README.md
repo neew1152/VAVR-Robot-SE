@@ -11,7 +11,7 @@ The legacy software, built on .NET Framework 3.5, suffered from critical archite
 * **Frame-Dependent Physics:** The old simulator tied physical execution to the rendering frame rate. If the computer was under heavy load or the simulator window was minimized, the simulation would yield unstable, non-deterministic results (glitches).
 * **Memory Leaks:** The legacy .NET infrastructure was prone to random memory leaks, causing complex code to silently fail or crash the software.
 
-**VAVR-Robot-SE** solves these issues by completely decoupling the hardware logic from the visual rendering. It ensures that the virtual robot will perform the same way, every single time, regardless of screen refresh rates or computer CPU load.
+**VAVR-Robot-SE** solves these issues by completely decoupling the hardware logic from the visual rendering. It ensures the virtual robot performs the same way every time, regardless of screen refresh rates or CPU load.
 
 ## ⚙️ How It Works
 The simulator acts as a bridge between a cycle-accurate CPU emulator and a rigid-body physics engine:
@@ -19,7 +19,6 @@ The simulator acts as a bridge between a cycle-accurate CPU emulator and a rigid
 * **The Brain (`avr8js`)**: Emulates the ATmega328P CPU. It executes compiled `.hex` machine code with cycle-accurate precision, managing Timers, PWM (via OCR registers), ADC channels, and Digital I/O.
 * **The World (`matter-js`)**: Manages the 2D physics, collisions, and raycasting.
 * **The Bridge**: The React application intercepts CPU memory addresses. For example, it translates motor PWM signals into physical velocity forces in `matter-js`, and translates physical raycasts or map pixel-color readings back into virtual voltages for the ADC.
-* **The Compiler**: Uses the Wokwi Cloud Compiler API to translate user-written Arduino C/C++ code into `.hex` binaries on the fly.
 
 ## ✨ Key Features
 * 🏗️ **Customizable Robot Build:** Equip a custom chassis with DC Motors, Ultrasonics, IR LEDs, and Grabbers.
@@ -32,7 +31,7 @@ The simulator acts as a bridge between a cycle-accurate CPU emulator and a rigid
 As an evolving emulation environment, there are a few acknowledged bugs and intentional architectural limitations:
 
 ### The "Time Travel" Problem
-Attempting to add a "Fast Forward" or "Time Travel" feature to speed up the simulation has been abandoned. 
+We abandoned attempts to add a "Fast Forward" or "Time Travel" feature to speed up the simulation. 
 * **The Cause:** The simulator relies on a strict "time lock" between the CPU and the Physics engine (exactly 150,000 CPU cycles per 16.666ms physics step). 
 * Speeding up the CPU causes the robot to outpace the physics engine (sensors go "blind" before the world updates). 
 * Speeding up the physics engine causes "tunnelling" (the robot teleports through walls before collision detection catches it). 
