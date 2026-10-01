@@ -9,7 +9,7 @@ npm create vite@latest VAVR-Robot-SE -- --template react
 cd VAVR-Robot-SE
 npm install
 npm install -D @tailwindcss/vite
-npm install @monaco-editor/react lucide-react avr8js matter-js react-resizable-panels
+npm install @monaco-editor/react avr8js jszip lucide-react matter-js react-resizable-panels
 
 arduino-cli core update-index
 arduino-cli core install arduino:avr
@@ -55,4 +55,15 @@ npm run dev
 
 cd VAVR-Robot-SE/arduino-compiler-server
 node server.js
+```
+
+File Structure:
+```
+arduino_project.zip
+├── code/
+│   ├── main.ino
+│   └── sketch1.ino
+├── environment/
+│   └── map.png
+└── workspace.json
 ```
