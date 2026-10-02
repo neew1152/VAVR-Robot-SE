@@ -177,15 +177,3 @@ The simulated ATmega328P architecture maps virtual I/O pins directly to its stan
     2. Base constraint: Locks relative orientation angle and arrests uncontrolled rotation.
   * Normalizes captured body mass to `0.0001` to eliminate inertia-induced chassis instability during movement.
   * Releasing the pin (`LOW`) destroys the constraints and restores original physical properties (mass and collision groups).
-
-## Known Issues
-
-### The "Time Travel" Problem
-We abandoned attempts to add a "Fast Forward" or "Time Travel" feature to speed up the simulation. 
-* **The Cause:** The simulator relies on a strict "time lock" between the CPU and the Physics engine (exactly 150,000 CPU cycles per 16.666ms physics step). 
-* Speeding up the CPU causes the robot to outpace the physics engine (sensors go "blind" before the world updates). 
-* Speeding up the physics engine causes "tunnelling" (the robot teleports through walls before collision detection catches it). 
-* Running both faster on the browser's single JavaScript thread causes the browser to throttle the tab, destroying the deterministic stability this project was built to achieve. 
-
-### The `executeFrame` Bug
-There is a known bug residing within the core `executeFrame` loop synchronization. It is currently acknowledged but left as-is, as resolving it requires a substantial refactor of how `requestAnimationFrame` hands off cycles to the `avr8js` CPU.
