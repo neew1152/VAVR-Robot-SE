@@ -56,14 +56,3 @@ npm run dev
 cd VAVR-Robot-SE/arduino-compiler-server
 node server.js
 ```
-
-File Structure:
-```
-arduino_project.zip
-├── code/
-│   ├── main.ino
-│   └── sketch1.ino
-├── environment/
-│   └── map.png
-└── workspace.json
-```
