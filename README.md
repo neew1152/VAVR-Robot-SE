@@ -1,6 +1,6 @@
 # Virtual AVR Robot Simulation Environment
 
-![Software-Preview.png](https://github.com/user-attachments/assets/44c462e3-ea62-43a2-b2ec-73a2fabbc6fa)
+![Software-Preview.png](https://github.com/user-attachments/assets/9a1e58c7-ba00-45ac-ad17-7c09a427d040)
 
 **Note: The most stable build is v0.7.5**
 
